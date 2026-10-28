@@ -30,11 +30,17 @@ public class SearchInventoryMap {
 
     private static void loadInventory(){
         // Your code should be here
+        String line;
         try {
-            String line;
+
             BufferedReader reader = new BufferedReader(new FileReader("inventory(in).csv"));
-            reader.readLine();
             while ((line = reader.readLine()) != null){
+                String[] parts = line.split("\\|");
+                int id = Integer.parseInt(parts[0]);
+                String name = parts[1];
+                double price = Double.parseDouble(parts[2]);
+                inventory.put(id,new Product(id, name, price));
+
 
 
             }
